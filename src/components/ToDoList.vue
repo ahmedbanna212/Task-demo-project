@@ -47,7 +47,7 @@ import ToDoItem from './ToDoItem.vue';
       },
 
       deleteTask(task){
-        let taskExists = this.allTasks.find((id)=> id.task_id == task.task_id)
+        let taskExists = this.allTasks.find((id)=> id.task.task_id == task.task_id)
         if(taskExists){
           this.allTasks = this.allTasks.filter((task)=> task != taskExists)
           alert('Task is successfully deleted.')
@@ -55,9 +55,11 @@ import ToDoItem from './ToDoItem.vue';
         
       },
       updateTask(newtitle,newdesc,oldtaskid){
-        let taskExists = this.allTasks.find((task)=> task.task_id == oldtaskid)
+        let taskExists = this.allTasks.find((task)=> task.task.task_id == oldtaskid)
+        console.log(taskExists)
+        
         if(taskExists){
-          this.allTasks = this.allTasks.map((task)=> task.task_id === taskExists.task_id? {...task, task:{task_title: newtitle, task_description: newdesc}}: task)
+          this.allTasks = this.allTasks.map((task)=> task.task.task_id === taskExists.task.task_id? {...task, task:{task_title: newtitle, task_description: newdesc}}: task)
         }
        
       },

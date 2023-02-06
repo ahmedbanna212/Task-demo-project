@@ -16,7 +16,7 @@
           
            
             <v-flex  class="float-right mt-3">
-                <v-btn class="mr-2" elevation="2" small @click="deleteTask(task)"><i class="fa-solid fa-trash"></i></v-btn>
+                <v-btn class="mr-2" elevation="2" small @click="deleteTask(task.task)"><i class="fa-solid fa-trash"></i></v-btn>
                 <EditTask :ModalTitle="editTitle" :taskk="task" :getUpdateTask="getUpdateTask"/>
             </v-flex>
         </v-layout>

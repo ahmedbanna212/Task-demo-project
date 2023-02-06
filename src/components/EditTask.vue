@@ -9,7 +9,6 @@
             v-on="on"
             elevation="2"
             small
-            @click="getToBeUpdatedTask(taskk)"
             @click.stop="dialog = true"
           >
           Edit
@@ -68,8 +67,8 @@ export default {
             if(this.$refs.form.validate()){
            var newtitle = this.newtitle
            var newdescription = this.newdescription
-           console.log(this.taskk.task_id)
-           this.getUpdateTask(newtitle, newdescription, this.taskk.task_id)
+           console.log(this.taskk.task.task_id)
+           this.getUpdateTask(newtitle, newdescription, this.taskk.task.task_id)
 
         }
 
