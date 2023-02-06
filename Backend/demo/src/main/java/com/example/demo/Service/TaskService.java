@@ -48,16 +48,7 @@ public class TaskService {
         return true;
         
     }
-
-    public boolean updateTask(Long id,String Subject) {
-        if(repo.findById(id).isPresent()) {
-            Task task = repo.findById(id).get();
-            task.setSubject(Subject);
-            repo.save(task);
-        }
-        return true;
-    }
-    public boolean DybamicUpdate(Long id,TaskDTO taskDTO) {
+    public boolean updateTask(Long id,TaskDTO taskDTO) {
         if(repo.findById(id).isPresent()) {
             if(taskDTO.getTask()!=null) {
                 if(taskDTO.getTask().getSubject()!=null) {
