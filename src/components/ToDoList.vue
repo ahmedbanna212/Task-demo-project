@@ -9,10 +9,9 @@
       <AddTask  :getTask="AddTask" :closeModal="isClosed" />
     </v-row>
     <v-row  class="align-center my-2 flex-column">
-       
       
       <div v-for="task in allTasks" :key="task.task_id">
-       <ToDoItem :task="task" :deleteTask="deleteTask" :updateTask="updateTask"/>
+       <ToDoItem :crossed="crossed" :task="task" :deleteTask="deleteTask" :updateTask="updateTask" :updateTaskState="updateTaskState"/>
         </div>
     
     </v-row>
@@ -37,15 +36,16 @@ import ToDoItem from './ToDoItem.vue';
      
     
     }),
+    props:{
+      crossed: Boolean
+    },
     methods:{
-      AddTask(task){
-        this.allTasks.push(task)
+      AddTask(taskObject){
+        this.allTasks.push(taskObject)
+       console.log(taskObject)
       
       },
 
-      isClosed(){
-        this.closedModal = true
-      },
       deleteTask(task){
         let taskExists = this.allTasks.find((id)=> id.task_id == task.task_id)
         if(taskExists){
@@ -57,9 +57,17 @@ import ToDoItem from './ToDoItem.vue';
       updateTask(newtitle,newdesc,oldtaskid){
         let taskExists = this.allTasks.find((task)=> task.task_id == oldtaskid)
         if(taskExists){
-          this.allTasks = this.allTasks.map((task)=> task.task_id === taskExists.task_id? {...task, task_title: newtitle, task_description: newdesc}: task)
+          this.allTasks = this.allTasks.map((task)=> task.task_id === taskExists.task_id? {...task, task:{task_title: newtitle, task_description: newdesc}}: task)
         }
        
+      },
+      updateTaskState(taskid, crossed){
+        if(crossed == true){
+          this.allTasks = this.allTasks.map((task)=> task.task.task_id == taskid? {...task, task_state:{state: 'Done'}}: task )
+        }
+        else if(crossed == false){
+          this.allTasks = this.allTasks.map((task)=> task.task.task_id == taskid? {...task, task_state:{state: 'In Progress'}}: task )
+        }
       }
      
     }

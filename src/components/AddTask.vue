@@ -61,6 +61,7 @@
         description: '',
         task_id: '',
         count: 0,
+        state_count: 100,
         inputRules: [
             v=> v.length > 0  || 'Please Fill the empty fields.',
             
@@ -77,10 +78,21 @@
             var task = {
             task_title: this.title,
             task_description: this.description,
-            task_id: this.count
+            task_id: this.count,
+           
         }
+        var task_state ={
+          task_state_id : this.state_count,
+          state: 'In Progress',
+          task_ID : task.task_id
+
+        }
+
         this.count++
-        this.getTask(task)
+        this.task_count++
+        console.log(task.task_id)
+        console.log(task_state.state)
+        this.getTask({task, task_state})
         this.$refs.form.reset();
         
         }
