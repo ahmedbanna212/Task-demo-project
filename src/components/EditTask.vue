@@ -67,8 +67,8 @@ export default {
             if(this.$refs.form.validate()){
            var newtitle = this.newtitle
            var newdescription = this.newdescription
-           console.log(this.taskk.task.task_id)
-           this.getUpdateTask(newtitle, newdescription, this.taskk.task.task_id)
+           console.log(this.taskk.task.id)
+           this.getUpdateTask(newtitle, newdescription, this.taskk.task.id)
 
         }
 

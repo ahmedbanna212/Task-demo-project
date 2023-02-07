@@ -1,16 +1,16 @@
 <template>
   <v-app>
-    <ToDoList/>
+    <router-view/>
   </v-app>
 </template>
 
 <script>
-import ToDoList from './components/ToDoList.vue';
+
 export default {
   name: 'App',
 
   components: {
-  ToDoList
+ 
   },
 
   data: () => ({

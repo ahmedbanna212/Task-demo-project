@@ -1,16 +1,16 @@
 <template >
   <v-container>
-    <v-card flat @click="cross" class="pa-3 mb-3" :width="width">
+    <v-card flat class="pa-3 mb-3" :width="width">
         <v-layout row wrap :width="width">
-            <v-flex md5 sm4 xs3  v-bind:class="{'text-decoration-line-through': crossed}">
-                <div class="caption grey--text">{{task.task.task_title}}</div>
-                <div >{{task.task.task_description}}</div>
+            <v-flex md5 sm4 xs3  v-bind:class="{'text-decoration-line-through': crossed}"  @click="cross">
+                <div class="caption grey--text">{{task.task.subject}}</div>
+                <div >{{task.task.description}}</div>
                
               
             </v-flex>
             <v-flex md5 sm4 xs4>
                 <div class="caption grey--text">Task State</div>
-                <div>{{ task.task_state.state }}</div>
+                <div>{{ task.taskState.state }}</div>
 
             </v-flex>
           
@@ -54,7 +54,7 @@
         cross(){
             this.crossed= !this.crossed
             //console.log(this.task.task.task_id)
-            this.updateTaskState(this.task.task.task_id, this.crossed)
+            this.updateTaskState(this.task.task.id, this.crossed)
         },
         getUpdateTask(newtitle,newdesc, oldtaskid){
             this.updateTask(newtitle,newdesc,oldtaskid)

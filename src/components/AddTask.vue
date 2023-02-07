@@ -60,7 +60,7 @@
         title: '' ,
         description: '',
         task_id: '',
-        count: 0,
+        count: 900,
         state_count: 100,
         inputRules: [
             v=> v.length > 0  || 'Please Fill the empty fields.',
@@ -81,6 +81,7 @@
             task_id: this.count,
            
         }
+       
         var task_state ={
           task_state_id : this.state_count,
           state: 'In Progress',
